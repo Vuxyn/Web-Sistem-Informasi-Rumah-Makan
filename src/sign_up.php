@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="stylesheet" href="assets/sign_up.css">
+    <link rel="stylesheet" href="../assets/css/sign_up.css">
 </head>
 <body>
-    
+    <h1>Sign up</h1>
 </body>
 </html>

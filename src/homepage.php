@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="assets/homepage.css">
+    <link rel="stylesheet" href="../assets/css/homepage.css">
 </head>
 <body>
-    
+    <h1>Homepage</h1>
 </body>
 </html>
