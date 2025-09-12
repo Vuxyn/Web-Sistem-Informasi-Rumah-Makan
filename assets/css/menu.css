@@ -1,4 +1,136 @@
-body {
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
+body { 
+    background: #fff;
+    color: #000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    padding-top: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar .logo {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar .links a{
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.navbar .button {
+    padding: 4px 14px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0px 50px;
+    margin-bottom: 50px;
+}
+
+.menu-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.menu-item img {
+    background: #f4f4f4;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.menu-item h3 {
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.menu-item p {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #666
+}
+
+.menu-item .price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.menu-item button {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.footer {
+   padding: 20px 50px;
+   margin-top: 40px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.footer-top .logo {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 28px;
+}
+
+.footer-top .menu-links a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: #555;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+   
+    font-size: 12px;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 10px;
+}
+
+
