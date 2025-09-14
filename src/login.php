@@ -16,7 +16,7 @@
                     <img src="https://logodix.com/logo/498837.png" alt="Copyright Logo" class="copyright-logo">
                 </div>
                 <div class="footer-right">
-                    2025 NamaKelompok
+                    2025 Nama Kelompok
                 </div>
             </div>
             <div class="left">
