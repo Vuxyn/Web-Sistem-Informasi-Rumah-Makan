@@ -43,7 +43,7 @@
                 <p>Dapatkan diskon 10% untuk Rendang setiap jumat dan jangan lewatkan kesempatan ini untuk menikmati hidangan favorit anda</p>
                 <div class="promo-content">
                     <div class="promo-items">
-                        <img src="../assets/img/" alt="Rendang icon">
+                        <img src="../assets/img/Rendang.png" alt="Rendang icon" class="rendang">
                         <h3>Rendang spesial</h3>
                         <p>Rendang lezat dengan bumbu spesial, siap menggelitik lidah anda</p>
                     </div>
