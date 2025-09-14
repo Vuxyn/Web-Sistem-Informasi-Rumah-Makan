@@ -59,9 +59,11 @@ body {
     padding: 10px;
 }
 
-.menu-item img {
+.menu-item .img {
+    width: 100%;
     background: #f4f4f4;
     height: 150px;
+    object-fit: cover;
     margin-bottom: 10px;
 }
 
@@ -81,13 +83,18 @@ body {
     margin-bottom: 10px;
 }
 
-.menu-item button {
+.menu-item .button {
     width: 100%;
-    padding: 6px 10px;
+    padding: 0.5rem 0;
     border: 1px solid #000;
-    background-color: #fff;
+    background-color: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.85rem;
+}
+
+.button:hover {
+    background-color: #000;
+    color:#fff;
 }
 
 .footer {
@@ -108,12 +115,35 @@ body {
     font-size: 28px;
 }
 
+.footer-top .menu-links {
+    display: flex;
+    gap: 15px; 
+}
+
 .footer-top .menu-links a {
     margin-right: 15px;
     text-decoration: none;
     color: #000;
     font-size: 14px;
 }
+
+.footer-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.footer-icons a {
+    color: #000;
+    text-decoration: none;
+    color: #000;
+}
+
+.footer-icons a:hover i.fa-facebook {color:#666;}
+.footer-icons a:hover i.fa-instagram {color:#666;}
+.footer-icons a:hover i.fa-x-twitter {color:#666;}
+.footer-icons a:hover i.fa-linkedin {color:#666;}
+.footer-icons a:hover i.fa-youtube {color:#666;}
 
 .footer-bottom {
     display: flex;

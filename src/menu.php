@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="../assets/css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
      <div class="navbar">
@@ -27,60 +28,60 @@
     <!-- Menu Grid -->
     <div class="menu-grid">
         <div class="menu-item">
-            <div class="img"></div>
+            <img src="../assets/img/rendang.jpg" alt="Rendang Daging" class="img">
             <h3>Rendang Daging</h3>
             <p>Lauk</p>
             <div class="price">Rp. 100.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+           <img src="../assets/img/sate-padang.jpg" alt="Sate Padang" class="img">
             <h3>Sate Padang</h3>
             <p>Lauk</p>
             <div class="price">Rp. 80.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
-            <h3>Sayur Dau Singkong</h3>
+            <img src="../assets/img/daun-singkong.jpg" alt="Sayur Daun Singkong" class="img">
+            <h3>Sayur Daun Singkong</h3>
             <p>Sayur</p>
             <div class="price">Rp. 30.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+            <img src="../assets/img/teh.jpg" alt="Es Teh Manis" class="img">
             <h3>Es Teh Manis</h3>
             <p>Minuman</p>
             <div class="price">Rp. 15.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+           <img src="../assets/img/gulai-ikan.jpg" alt="Gulai Ikan" class="img">
             <h3>Gulai Ikan</h3>
             <p>Lauk</p>
             <div class="price">Rp. 90.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+            <img src="../assets/img/kerupuk.jpg" alt="Kerupuk Balado" class="img">
             <h3>Kerupuk Balado</h3>
             <p>Lauk</p>
             <div class="price">Rp. 25.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+            <img src="../assets/img/Pisang-Goreng.jpg" alt="Pisang Goreng" class="img">
             <h3>Pisang Goreng</h3>
             <p>Cemilan</p>
             <div class="price">Rp. 20.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
         <div class="menu-item">
-            <div class="img"></div>
+            <img src="../assets/img/klepon.jpg" alt="Klepon Ketan" class="img">
             <h3>Klepon Ketan</h3>
             <p>Cemilan</p>
             <div class="price">Rp. 18.000</div>
-            <button>Tambahkan ke Keranjang</button>
+            <button class="button">Tambahkan ke Keranjang</button>
         </div>
     </div>
 
@@ -94,6 +95,14 @@
                 <a href="-">Link</a>
                 <a href="-">Link</a>
             </div>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.x.com/"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>     
+            </div>
+
         </div>
            <hr>
         <div class="footer-bottom">
