@@ -4,7 +4,7 @@
         <title>
             Login Page RM
         </title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/login.css">
     </head>
     <body style= "margin: 0px">
         <div class="container">
