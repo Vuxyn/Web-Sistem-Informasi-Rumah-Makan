@@ -27,5 +27,6 @@
         <div class="login-text">Already have an account? <a href="login.php">Log In</a></div>
         <div class="footer">© 2025 NamaKelompok</div>
     </div>
+    script
 </body>
 </html>
