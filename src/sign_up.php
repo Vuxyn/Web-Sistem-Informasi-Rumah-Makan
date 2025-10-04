@@ -11,7 +11,7 @@
         <div class="logo">Logo</div>
         <h2>Sign Up</h2>
         <p>Please fill the form below to create an account.</p>
-        <form>
+        <form method="post">
             <label for="name">Name*</label>
             <input type="text" placeholder="Name" id="name" required>
             <label for="email">Email*</label>
@@ -27,6 +27,6 @@
         <div class="login-text">Already have an account? <a href="login.php">Log In</a></div>
         <div class="footer">© 2025 NamaKelompok</div>
     </div>
-    script
+    <script src="../logic/sign_up.js"></script>
 </body>
 </html>

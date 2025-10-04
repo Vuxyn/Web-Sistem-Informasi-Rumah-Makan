@@ -45,12 +45,14 @@
                     </button>
                 </div>
                 <p class="signup-text">
-                    Don't have an account? <a href="#" class="sign-up-link">Sign Up</a>
+                    Don't have an account? <a href="sign_up.php" class="sign-up-link">Sign Up</a>
                 </p>
             </div>
             <div class="right">
                 <img src="https://www.rukita.co/stories/wp-content/uploads/2020/01/restoran-padang-terbaik-di-jakarta-1360x900.png" alt="Login Image" class="login-image">
             </div>
         </div>
+
+        <script src="../logic/login.js"></script>
     </body>
 </html>

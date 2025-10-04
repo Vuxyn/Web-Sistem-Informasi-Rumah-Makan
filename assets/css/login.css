@@ -76,13 +76,18 @@
 .login-button {
     width: 100%;
     padding: 10px;
-    background: #000000;
+    background: #b22222;
     color: #fff;
     border: none;
     border-radius: 0;
     font-weight: bold;
     cursor: pointer;
     font-family: 'Arial Black', sans-serif;
+    transition: background 0.3s ease;
+}
+
+.login-button:hover {
+    background: #8b0000;
 }
 
 .label-row {

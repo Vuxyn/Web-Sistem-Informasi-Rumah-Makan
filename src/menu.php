@@ -114,5 +114,7 @@
             </div>
         </div>
     </div>
+
+    <script src="../logic/menu.js"></script>
 </body>
 </html>

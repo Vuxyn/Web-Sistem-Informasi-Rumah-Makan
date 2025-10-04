@@ -12,12 +12,12 @@
     <header class="header">
         <div class="logo">Logo</div>
         <nav class="nav">
-            <a href="#">Menu Utama</a>
+            <a href="menu.php">Menu Utama</a>
             <a href="#">Promo Harian</a>
             <a href="#">Galeri</a>
             <a href="#">Kontak</a>
         </nav>
-        <a class="btn" href="#">Login</a>
+        <a class="btn" href="login.php">Login</a>
     </header>
     <main class="main">
         <section class="hero">
@@ -27,7 +27,7 @@
           Setiap hidangan disajikan dengan resep tradisional yang telah
           diwariskan turun-temurun.</p>
                 <div class="hero-btn">
-                    <a class="view-btn" href="#">Lihat Menu</a>
+                    <a class="view-btn" href="menu.php">Lihat Menu</a>
                     <a class="order-btn" href="#">Pesan Sekarang</a>
                 </div>
             </div>
@@ -203,5 +203,6 @@
   </div>
 </footer>
 
+<script src="../logic/homepage.js"></script>
 </body>
 </html>

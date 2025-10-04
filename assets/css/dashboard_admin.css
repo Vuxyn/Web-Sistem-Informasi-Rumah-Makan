@@ -18,7 +18,7 @@ body {
 /* Sidebar Styles */
 .sidebar {
     width: 260px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #b22222 0%, #8b0000 100%);
     color: white;
     position: fixed;
     height: 100vh;
@@ -275,7 +275,7 @@ body {
 }
 
 .stat-icon {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #b22222, #ffd700);
     width: 60px;
     height: 60px;
     border-radius: 12px;
