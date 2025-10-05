@@ -1,8 +1,0 @@
-- [ ] Create src/login_handler.php for handling login POST requests
-- [ ] Create src/sign_up_handler.php for handling sign up POST requests
-- [ ] Edit src/config.php to start session
-- [ ] Edit logic/login.js to use AJAX POST to login_handler.php
-- [ ] Edit logic/sign_up.js to use AJAX POST to sign_up_handler.php
-- [ ] Edit src/login.php to remove form action
-- [ ] Edit src/sign_up.php to remove form action
-- [ ] Test login and sign up functionality

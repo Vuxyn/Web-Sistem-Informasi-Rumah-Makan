@@ -69,12 +69,12 @@
         }
 
         .btn-signup{
-            background-color: #b22222;
+            background-color: #000000;
             color: #fff;
         }
 
         .btn-signup:hover {
-            background-color: #8b0000;
+            background-color: #1f1f1f;
         }
 
         .btn-google {

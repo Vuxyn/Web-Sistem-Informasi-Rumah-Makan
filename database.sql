@@ -1,4 +1,4 @@
--- Database creation script for RM Padang Restaurant Information System
+.-- Database creation script for RM Padang Restaurant Information System
 
 -- Create database
 CREATE DATABASE IF NOT EXISTS rm_padang;
