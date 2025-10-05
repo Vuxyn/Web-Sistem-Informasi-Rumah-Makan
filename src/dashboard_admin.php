@@ -61,7 +61,7 @@
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <a href="#" class="logout-btn">
+                <a href="sign_up.php" class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
