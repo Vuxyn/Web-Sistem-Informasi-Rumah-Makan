@@ -45,7 +45,7 @@
                     </button>
                 </div>
                 <p class="signup-text">
-                    Don't have an account? <a href="#" class="sign-up-link">Sign Up</a>
+                    Don't have an account? <a href="sign_up.php" class="sign-up-link">Sign Up</a>
                 </p>
             </div>
             <div class="right">
