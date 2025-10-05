@@ -7,20 +7,31 @@
     <link rel="stylesheet" href="../assets/css/sign_up.css">
 </head>
 <body>
-     <div class="container">
+    <div class="container">
         <div class="logo">Logo</div>
         <h2>Sign Up</h2>
-        <p>Please fill the form below to create an account.</p>
+        <p>Create your account to get started</p>
         <form method="post">
-            <label for="name">Name*</label>
-            <input type="text" placeholder="Name" id="name" required>
-            <label for="email">Email*</label>
-            <input type="email" placeholder="Email" id="email" required>
-            <label for="password">Password*</label>
-            <input type="password" placeholder="Password" required>
+            <div class="input-wrapper">
+                <label for="name">Name*</label>
+                <input type="text" placeholder="Enter your full name" id="name" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="email">Email*</label>
+                <input type="email" placeholder="Enter your email" id="email" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="password">Password*</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+            </div>
             <button type="submit" class="btn btn-signup">Sign up</button>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
             <button type="button" class="btn btn-google">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
                 Sign up with Google
             </button>
         </form>

@@ -1,3 +1,57 @@
+<?php
+require_once 'config.php';
+
+// Query stats
+// Total orders today
+$sql_orders = "SELECT COUNT(*) as total_orders, SUM(total) as total_revenue FROM orders WHERE DATE(order_date) = CURDATE()";
+$stmt_orders = $pdo->prepare($sql_orders);
+$stmt_orders->execute();
+$stats_orders = $stmt_orders->fetch();
+
+// Total menus
+$sql_menus = "SELECT COUNT(*) as total_menus FROM menus";
+$stmt_menus = $pdo->prepare($sql_menus);
+$stmt_menus->execute();
+$stats_menus = $stmt_menus->fetch();
+
+// Total customers
+$sql_customers = "SELECT COUNT(*) as total_customers FROM users WHERE role = 'user'";
+$stmt_customers = $pdo->prepare($sql_customers);
+$stmt_customers->execute();
+$stats_customers = $stmt_customers->fetch();
+
+// Load data for tables
+// Menus
+$sql_menus_data = "SELECT * FROM menus ORDER BY id DESC";
+$stmt_menus_data = $pdo->prepare($sql_menus_data);
+$stmt_menus_data->execute();
+$menus = $stmt_menus_data->fetchAll();
+
+// Orders
+$sql_orders_data = "SELECT o.*, u.name as customer_name FROM orders o LEFT JOIN users u ON o.customer_id = u.id ORDER BY o.order_date DESC LIMIT 10";
+$stmt_orders_data = $pdo->prepare($sql_orders_data);
+$stmt_orders_data->execute();
+$orders = $stmt_orders_data->fetchAll();
+
+// Customers
+$sql_customers_data = "SELECT u.*, COUNT(o.id) as total_orders, SUM(o.total) as total_spent FROM users u LEFT JOIN orders o ON u.id = o.customer_id WHERE u.role = 'user' GROUP BY u.id ORDER BY u.created_at DESC";
+$stmt_customers_data = $pdo->prepare($sql_customers_data);
+$stmt_customers_data->execute();
+$customers = $stmt_customers_data->fetchAll();
+
+// Inventory
+$sql_inventory = "SELECT * FROM inventory ORDER BY updated_at DESC";
+$stmt_inventory = $pdo->prepare($sql_inventory);
+$stmt_inventory->execute();
+$inventory = $stmt_inventory->fetchAll();
+
+// Promos
+$sql_promos = "SELECT * FROM promos ORDER BY created_at DESC";
+$stmt_promos = $pdo->prepare($sql_promos);
+$stmt_promos->execute();
+$promos = $stmt_promos->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -106,7 +160,7 @@
                                 <i class="fas fa-shopping-cart"></i>
                             </div>
                             <div class="stat-info">
-                                <h3 id="total-orders">156</h3>
+                                <h3><?php echo $stats_orders['total_orders']; ?></h3>
                                 <p>Total Pesanan Hari Ini</p>
                             </div>
                         </div>
@@ -115,7 +169,7 @@
                                 <i class="fas fa-dollar-sign"></i>
                             </div>
                             <div class="stat-info">
-                                <h3 id="total-revenue">Rp 12.5M</h3>
+                                <h3>Rp <?php echo number_format($stats_orders['total_revenue'], 0, ',', '.'); ?></h3>
                                 <p>Pendapatan Hari Ini</p>
                             </div>
                         </div>
@@ -124,7 +178,7 @@
                                 <i class="fas fa-utensils"></i>
                             </div>
                             <div class="stat-info">
-                                <h3 id="menu-items">45</h3>
+                                <h3><?php echo $stats_menus['total_menus']; ?></h3>
                                 <p>Menu Tersedia</p>
                             </div>
                         </div>
@@ -133,7 +187,7 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="stat-info">
-                                <h3 id="active-customers">89</h3>
+                                <h3><?php echo $stats_customers['total_customers']; ?></h3>
                                 <p>Pelanggan Aktif</p>
                             </div>
                         </div>
@@ -191,28 +245,19 @@
                                     </tr>
                                 </thead>
                                 <tbody id="recent-orders-tbody">
+                                    <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td>#001</td>
-                                        <td>Budi Santoso</td>
-                                        <td>Rendang + Nasi</td>
-                                        <td>Rp 25.000</td>
-                                        <td><span class="status pending">Pending</span></td>
+                                        <td>#<?php echo $order['id']; ?></td>
+                                        <td><?php echo htmlspecialchars($order['customer_name'] ?: 'N/A'); ?></td>
+                                        <td><?php echo htmlspecialchars($order['items']); ?></td>
+                                        <td>Rp <?php echo number_format($order['total'], 0, ',', '.'); ?></td>
+                                        <td><span class="status <?php echo strtolower($order['status']); ?>"><?php echo ucfirst($order['status']); ?></span></td>
                                         <td>
                                             <button class="btn-action view"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action edit"><i class="fas fa-edit"></i></button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>#002</td>
-                                        <td>Siti Aminah</td>
-                                        <td>Gulai Ayam + Nasi</td>
-                                        <td>Rp 22.000</td>
-                                        <td><span class="status completed">Selesai</span></td>
-                                        <td>
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        </td>
-                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -265,7 +310,20 @@
                                     </tr>
                                 </thead>
                                 <tbody id="menu-table-body">
-                                    <!-- Data akan diisi oleh JavaScript -->
+                                    <?php foreach ($menus as $menu): ?>
+                                    <tr>
+                                        <td><img src="<?php echo htmlspecialchars($menu['image'] ?: '../assets/images/placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($menu['name']); ?>" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                                        <td><?php echo htmlspecialchars($menu['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($menu['category']); ?></td>
+                                        <td>Rp <?php echo number_format($menu['price'], 0, ',', '.'); ?></td>
+                                        <td><span class="status <?php echo $menu['status'] === 'tersedia' ? 'completed' : 'cancelled'; ?>"><?php echo ucfirst($menu['status']); ?></span></td>
+                                        <td><?php echo $menu['stock']; ?></td>
+                                        <td>
+                                            <button class="btn-action edit" onclick="editMenu(<?php echo $menu['id']; ?>)"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action delete" onclick="deleteMenu(<?php echo $menu['id']; ?>)"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -319,7 +377,21 @@
                                     </tr>
                                 </thead>
                                 <tbody id="orders-table-body">
-                                    <!-- Data akan diisi oleh JavaScript -->
+                                    <?php foreach ($orders as $order): ?>
+                                    <tr>
+                                        <td>#<?php echo $order['id']; ?></td>
+                                        <td><?php echo htmlspecialchars($order['customer_name'] ?: 'N/A'); ?></td>
+                                        <td><?php echo htmlspecialchars($order['items']); ?></td>
+                                        <td><?php echo $order['quantity'] ?? 1; ?></td>
+                                        <td>Rp <?php echo number_format($order['total'], 0, ',', '.'); ?></td>
+                                        <td><span class="status <?php echo strtolower($order['status']); ?>"><?php echo ucfirst($order['status']); ?></span></td>
+                                        <td><?php echo date('d/m/Y H:i', strtotime($order['order_date'])); ?></td>
+                                        <td>
+                                            <button class="btn-action view" onclick="viewOrder(<?php echo $order['id']; ?>)"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" onclick="editOrder(<?php echo $order['id']; ?>)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -365,7 +437,21 @@
                                     </tr>
                                 </thead>
                                 <tbody id="promo-table-body">
-                                    <!-- Data akan diisi oleh JavaScript -->
+                                    <?php foreach ($promos as $promo): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($promo['code']); ?></td>
+                                        <td><?php echo htmlspecialchars($promo['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($promo['type']); ?></td>
+                                        <td><?php echo $promo['type'] === 'percentage' ? $promo['value'] . '%' : 'Rp ' . number_format($promo['value'], 0, ',', '.'); ?></td>
+                                        <td><?php echo date('d/m/Y', strtotime($promo['end_date'])); ?></td>
+                                        <td><span class="status <?php echo strtolower($promo['status']); ?>"><?php echo ucfirst($promo['status']); ?></span></td>
+                                        <td><?php echo $promo['usage_count'] ?? 0; ?>/<?php echo $promo['max_usage'] ?? '∞'; ?></td>
+                                        <td>
+                                            <button class="btn-action edit" onclick="editPromo(<?php echo $promo['id']; ?>)"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action delete" onclick="deletePromo(<?php echo $promo['id']; ?>)"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -421,7 +507,21 @@
                                     </tr>
                                 </thead>
                                 <tbody id="inventory-table-body">
-                                    <!-- Data akan diisi oleh JavaScript -->
+                                    <?php foreach ($inventory as $item): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($item['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($item['category']); ?></td>
+                                        <td><?php echo $item['stock']; ?></td>
+                                        <td><?php echo htmlspecialchars($item['unit']); ?></td>
+                                        <td>Rp <?php echo number_format($item['price_per_unit'], 0, ',', '.'); ?></td>
+                                        <td><span class="status <?php echo strtolower($item['status']); ?>"><?php echo ucfirst($item['status']); ?></span></td>
+                                        <td><?php echo date('d/m/Y H:i', strtotime($item['updated_at'])); ?></td>
+                                        <td>
+                                            <button class="btn-action edit" onclick="editInventory(<?php echo $item['id']; ?>)"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action delete" onclick="deleteInventory(<?php echo $item['id']; ?>)"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -454,7 +554,21 @@
                                     </tr>
                                 </thead>
                                 <tbody id="customers-table-body">
-                                    <!-- Data akan diisi oleh JavaScript -->
+                                    <?php foreach ($customers as $customer): ?>
+                                    <tr>
+                                        <td><?php echo $customer['id']; ?></td>
+                                        <td><?php echo htmlspecialchars($customer['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($customer['email']); ?></td>
+                                        <td><?php echo htmlspecialchars($customer['phone'] ?: '-'); ?></td>
+                                        <td><?php echo $customer['total_orders']; ?></td>
+                                        <td>Rp <?php echo number_format($customer['total_spent'], 0, ',', '.'); ?></td>
+                                        <td><?php echo date('d/m/Y', strtotime($customer['created_at'])); ?></td>
+                                        <td>
+                                            <button class="btn-action view" onclick="viewCustomer(<?php echo $customer['id']; ?>)"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" onclick="editCustomer(<?php echo $customer['id']; ?>)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

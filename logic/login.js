@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Perform login function (AJAX call to backend)
     function performLogin(email, password) {
-        fetch('src/login_handler.php', {
+        fetch('login_handler.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

@@ -85,5 +85,3 @@ CREATE TABLE promos (
 INSERT INTO users (name, email, password, role) VALUES
 ('Admin RM Padang', 'admin@rmpadang.com', '$2y$10$hashedpassword', 'admin');
 
--- Note: Replace '$2y$10$hashedpassword' with actual hashed password for 'admin123'
--- You can generate it using password_hash('admin123', PASSWORD_DEFAULT) in PHP

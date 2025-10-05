@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const signUpForm = document.querySelector('form');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
-    const passwordInput = document.querySelector('input[type="password"]');
+    const passwordInput = document.getElementById('password');
     const signUpButton = document.querySelector('.btn-signup');
 
     // Form submission handler
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Perform sign up function (AJAX call to backend)
     function performSignUp(name, email, password) {
-        fetch('src/sign_up_handler.php', {
+        fetch('sign_up_handler.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

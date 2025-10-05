@@ -187,50 +187,42 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Menangani submit form untuk Menu
-    document.getElementById('menuForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const menuId = document.getElementById('menuId').value;
-        const menuName = document.getElementById('menuName').value;
-        const menuCategory = document.getElementById('menuCategory').value;
-        const menuPrice = document.getElementById('menuPrice').value;
-        const menuDescription = document.getElementById('menuDescription').value;
-        const menuStock = document.getElementById('menuStock').value;
-        const menuStatus = document.getElementById('menuStatus').value;
-        const menuImage = document.getElementById('menuImage').files[0];
+document.getElementById('menuForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const menuId = document.getElementById('menuId').value;
+    const menuImage = document.getElementById('menuImage').files[0];
+    
+    // Gunakan FormData untuk handle file upload
+    const formData = new FormData();
+    formData.append('id', menuId);
+    formData.append('name', document.getElementById('menuName').value);
+    formData.append('category', document.getElementById('menuCategory').value);
+    formData.append('price', document.getElementById('menuPrice').value);
+    formData.append('description', document.getElementById('menuDescription').value);
+    formData.append('stock', document.getElementById('menuStock').value);
+    formData.append('status', document.getElementById('menuStatus').value);
+    
+    if (menuImage) {
+        formData.append('image', menuImage); // File object
+    }
 
-        const data = {
-            name: menuName,
-            category: menuCategory,
-            price: menuPrice,
-            description: menuDescription,
-            stock: menuStock,
-            status: menuStatus,
-            image: menuImage ? menuImage.name : ''
-        };
+    try {
+        const response = await fetch(menuId ? `api/menus.php?id=${menuId}` : 'api/menus.php', {
+            method: menuId ? 'PUT' : 'POST',
+            body: formData // Jangan set Content-Type, biar browser yang handle
+        });
 
-        try {
-            const response = await fetch(menuId ? `api/menus.php?id=${menuId}` : 'api/menus.php', {
-                method: menuId ? 'PUT' : 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                alert(`Menu ${menuName} telah disimpan!`);
-                closeMenuModal();
-                loadPageData('menu');
-                loadDashboardStats();
-            } else {
-                alert('Gagal menyimpan menu');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Terjadi kesalahan saat menyimpan');
+        const result = await response.json();
+        if (result.success) {
+            alert('Menu berhasil disimpan!');
+            closeMenuModal();
+            loadPageData('menu');
         }
-    });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
 
     // Menangani submit form untuk Promo
     document.getElementById('promoForm').addEventListener('submit', async (e) => {
