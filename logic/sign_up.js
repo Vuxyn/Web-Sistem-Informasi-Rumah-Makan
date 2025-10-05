@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Perform sign up function (AJAX call to backend)
     function performSignUp(name, email, password) {
-        fetch('sign_up_handler.php', {
+        fetch('../src/sign_up_handler.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
